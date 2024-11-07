@@ -1,0 +1,16 @@
+id: subflow
+namespace: company.engineering
+
+inputs:
+  - id: debug
+    type: BOOLEAN
+
+tasks:
+  - id: return
+    type: io.kestra.plugin.core.debug.Return
+    format: "Subflow: {{ inputs.debug }}"
+
+outputs:
+  - id: subflow_output
+    type: STRING
+    value: "{{ outputs.return.value }}"

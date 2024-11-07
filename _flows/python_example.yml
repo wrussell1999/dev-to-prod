@@ -1,0 +1,16 @@
+id: python_example
+namespace: company.engineering
+
+tasks:
+  - id: "script"
+    type: "io.kestra.plugin.scripts.python.Script"
+    script: |
+      from kestra import Kestra
+      import requests
+
+      response = requests.get('https://google.com')
+      print(response.status_code)
+
+      Kestra.outputs({'status': response.status_code, 'text': response.text})
+    beforeCommands:
+      - pip install requests kestra

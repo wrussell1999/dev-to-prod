@@ -1,0 +1,22 @@
+id: golang_example
+namespace: company.engineering
+
+tasks:
+  - id: go
+    type: io.kestra.plugin.scripts.shell.Commands
+    taskRunner:
+      type: io.kestra.plugin.scripts.runner.docker.Docker
+    containerImage: golang:latest
+    namespaceFiles:
+      enabled: true
+    commands:
+      - go run hello_world.go
+    inputFiles:
+      hello_world.go: |
+        package main
+
+        import "fmt"
+
+        func main() {
+            fmt.Println("Hello, World!")
+        }

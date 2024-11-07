@@ -1,0 +1,17 @@
+id: parent_flow
+namespace: company.engineering
+
+variables:
+  debug: true
+
+tasks:
+  - id: subflow
+    type: io.kestra.plugin.core.flow.Subflow
+    flowId: subflow
+    namespace: company.engineering
+    inputs:
+      debug: "{{ vars.debug }}"
+  
+  - id: log
+    type: io.kestra.plugin.core.log.Log
+    message: "{{ outputs.subflow.outputs.subflow_output }}"

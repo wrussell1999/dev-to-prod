@@ -1,0 +1,20 @@
+id: kv_store
+namespace: company.engineering
+
+variables:
+  debug: true
+
+tasks:
+  - id: set
+    type: io.kestra.plugin.core.kv.Set
+    key: debug
+    value: "{{ vars.debug }}"
+    namespace: "{{ flow.namespace }}"
+
+  - id: get
+    type: io.kestra.plugin.core.kv.Get
+    key: debug
+  
+  - id: log
+    type: io.kestra.plugin.core.log.Log
+    message: "{{ outputs.get.value }}"
