@@ -1,0 +1,14 @@
+id: myflow
+namespace: company.engineering
+
+tasks:
+  - id: get
+    type: io.kestra.plugin.core.kv.Get
+    key: debug
+    namespace: "{{ flow.namespace }}"
+
+  - id: log
+    type: io.kestra.plugin.core.log.Log
+    message: "{{ outputs.get.value }}"
+
+

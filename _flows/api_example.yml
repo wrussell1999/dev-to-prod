@@ -1,0 +1,14 @@
+id: api_example
+namespace: company.engineering
+
+tasks:
+  - id: python_script
+    type: io.kestra.plugin.scripts.python.Script
+    beforeCommands:
+      - pip install requests
+    script: |
+      import requests
+
+      r = requests.get('https://api.github.com/repos/kestra-io/kestra')
+      gh_stars = r.json()['stargazers_count']
+      print(gh_stars)
