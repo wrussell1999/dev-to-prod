@@ -1,0 +1,22 @@
+id: loop
+namespace: company.engineering
+
+tasks:
+  - id: log_flow
+    type: io.kestra.plugin.core.log.Log
+    message: "{{ execution }}"
+
+  - id: foreach
+    type: io.kestra.plugin.core.flow.ForEach
+    values: [1, 2]
+    tasks:
+      - id: log
+        type: io.kestra.plugin.core.log.Log
+        message: "{{ taskrun.value }}"
+      - id: if
+        type: io.kestra.plugin.core.flow.If
+        condition: "{{ true }}"
+        then:
+          - id: log_parent
+            type: io.kestra.plugin.core.log.Log
+            message: "{{ parents }}"

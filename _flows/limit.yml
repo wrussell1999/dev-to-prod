@@ -1,0 +1,8 @@
+id: limit
+namespace: company.engineering
+
+tasks:
+  - id: hello
+    type: io.kestra.plugin.scripts.shell.Commands
+    commands:
+      - sleep 15

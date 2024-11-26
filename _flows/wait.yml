@@ -1,0 +1,15 @@
+id: wait
+namespace: company.engineering
+
+tasks:
+  - id: log_before
+    type: io.kestra.plugin.core.log.Log
+    message: before
+
+  - id: hello
+    type: io.kestra.plugin.core.flow.Sleep
+    duration: PT10S
+
+  - id: log_after
+    type: io.kestra.plugin.core.log.Log
+    message: after

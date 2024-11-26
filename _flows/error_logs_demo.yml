@@ -1,0 +1,20 @@
+id: error_logs_demo
+namespace: company.engineering
+
+tasks:    
+  - id: copy
+    type: io.kestra.plugin.aws.s3.Copy
+    accessKeyId: "<access-key>"
+    secretKeyId: "<secret-key>"
+    region: "eu-central-1"
+    from:
+      bucket: "my-bucket"
+      key: "path/to/file"
+    to:
+      bucket: "my-bucket2"
+      key: "path/to/file2"
+
+errors:
+  - id: alert
+    type: io.kestra.plugin.core.log.Log
+    message: list of error logs — {{ errorLogs() }}

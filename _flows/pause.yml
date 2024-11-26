@@ -1,0 +1,7 @@
+id: pause
+namespace: company.engineering
+
+tasks:
+  - id: hello
+    type: io.kestra.plugin.core.flow.Sleep
+    duration: PT60S

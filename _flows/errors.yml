@@ -1,0 +1,12 @@
+id: errors
+namespace: company.engineering
+
+tasks:
+  - id: fail
+    type: io.kestra.plugin.core.execution.Fail
+
+errors:
+  - id: printErrorMsg
+    type: io.kestra.plugin.core.log.Log
+    message: "Error reading"
+    level: ERROR
